@@ -34,8 +34,7 @@ Analysis of the clustered mean waveforms confirms a clear divergence in backscat
 *Figure 2: Physical signature comparison between Lead (specular) and Sea Ice (diffuse) echoes.*
 
 ### 3.2 Signal Stability Across Sub-samples
-Visual inspection of individual normalized waveforms (Figures 3 & 4) confirms the GMM's robustness. Despite geographical variability across the Arctic transect, the returns within each cluster maintain a high degree of morphological consistency. This clustering stability indicates that the selected feature triplet—$\sigma^0$, PP, and SSD—effectively serves as a reliable proxy for surface discrimination, maintaining high signal-to-noise fidelity.
-
+Visual inspection of individual normalized waveforms (Figures 3 & 4) confirms the GMM's robustness. Despite geographical variability across the Arctic transect, the returns within each cluster maintain a high degree of morphological consistency. This clustering stability indicates that the selected feature triplet -- Sigma0, PP, and SSD -- effectively serves as a reliable proxy for surface discrimination, maintaining high signal-to-noise fidelity.
 ![Sea Ice Samples](sea_ice_individual_waveforms_subsampled.png)
 
 ![Lead Samples](leads_individual_waveforms_subsampled.png)
