@@ -1,42 +1,50 @@
 # GEOL0069_Assignments
 # Sentinel-3 Altimetry Classification: Sea Ice vs. Leads
 
-**Name**: Gareth Jiang  
+**Author**: Gareth Jiang  
 **Student ID**: 23004877  
-**Module**: GEOL0069 | UCL Earth Sciences  
+**Module**: GEOL0069 | Artificial Intelligence for Earth Observation  
 
-## 1. Project Overview
-[cite_start]This project focuses on the automated discrimination between **Sea Ice** and **Leads** (open water channels) in the Arctic using **Sentinel-3 altimetry data**[cite: 10, 281]. [cite_start]By leveraging unsupervised machine learning, we categorize radar waveforms based on their physical return characteristics to better understand sea ice distribution[cite: 6, 7].
+---
 
-## 2. Key Results & Visualizations
+## 1. Introduction
+[cite_start]Monitoring the Arctic environment is crucial for understanding global climate change.  A key challenge in polar remote sensing is the accurate discrimination between **Sea Ice** and **Leads** (open water channels). This project utilizes high-resolution **Sentinel-3 altimetry data** to automate this classification process. [cite_start]By analyzing the physical properties of radar waveforms, we provide a robust method for large-scale surface type identification without the need for manual labeling. [cite: 43]
 
-### A. Raw Feature Distribution
-We analyzed the relationship between **Sigma0** (backscatter coefficient) and **Peakiness**. [cite_start]These features are critical for identifying surface roughness[cite: 284, 491].
-![Feature Distribution](替换为你的文件名1.png)
-*Figure 1: Scatter plot of Sigma0 vs. Peakiness showing the initial separation of data points.*
+## 2. Methodology
+[cite_start]Our approach employs unsupervised machine learning to group data based on its physical characteristics. [cite: 44, 46]
 
-### B. Gaussian Mixture Model (GMM) Clustering
-[cite_start]Using an unsupervised GMM approach, the data was partitioned into two distinct clusters representing different surface types[cite: 68, 69].
-![GMM Clustering](替换为你的文件名2.png)
-*Figure 2: Results of GMM clustering in the feature space.*
+### 2.1 Feature Engineering
+[cite_start]We extracted three primary features from the Sentinel-3 radar echoes to characterize the surface: [cite: 98]
+* [cite_start]**Sigma0 ($\sigma^0$)**: Represents the backscattered power. [cite: 68]
+* **Peakiness (PP)**: Measures the sharpness of the return. [cite_start]Leads typically act as specular reflectors, resulting in high peakiness. [cite: 68]
+* **Stack Standard Deviation (SSD)**: Quantifies the variation of the return across multiple look angles.
 
-### C. Mean Waveform Comparison (Physical Validation)
-[cite_start]The most significant result is the distinct difference in the average echo shapes[cite: 670].
-![Mean Waveforms](替换为你的文件名3.png)
-*Figure 3: Average waveforms for Lead vs. Sea Ice. [cite_start]Leads exhibit a sharp specular peak, while Sea Ice shows a diffuse, lower-amplitude return[cite: 670].*
+### 2.2 Unsupervised Learning (GMM)
+[cite_start]We implemented a **Gaussian Mixture Model (GMM)** to perform the clustering. [cite: 44, 66] [cite_start]Unlike traditional K-means, GMM is a probabilistic model that accounts for the covariance and shape of the data distribution, allowing for more flexible and accurate classification of complex altimetry signals. [cite: 67, 72]
+![Clustered Results](clustered_mean_waveforms_class0-4.png)
+*Figure 1: Mean waveforms generated from the unsupervised clustering process.*
 
-### D. Sub-sampled Waveform Variations
-[cite_start]To ensure consistency, we visualized individual normalized samples from each class[cite: 320, 529].
-![Waveform Samples](替换为你的文件名4.png)
-*Figure 4: Normalized individual waveforms showing the stability of the classification across multiple samples.*
+## 3. Results
+[cite_start]The model demonstrated exceptional performance, successfully capturing the distinct physical signatures of the Arctic surface. [cite: 83]
 
-### E. Model Validation (Confusion Matrix)
-[cite_start]The performance of our unsupervised model was validated against the official ESA surface type flags[cite: 598, 599].
-![Confusion Matrix](替换为你的文件名5.png)
-*Figure 5: The confusion matrix reveals a high classification accuracy of **99.62%**.*
+### 3.1 Physical Validation (Mean Waveforms)
+[cite_start]The averaged waveforms for each class confirm the physical validity of our clustering. [cite: 85] The Lead class exhibits a sharp specular peak, while Sea Ice shows a broader, diffuse return.
+![Mean Waveforms Comparison](mean_waveforms_lead_vs_ice.png)
+*Figure 2: Direct comparison between Lead (specular) and Sea Ice (diffuse) mean waveforms.*
 
-## 3. Methodology
-* [cite_start]**Data Source**: Sentinel-3 Altimetry Dataset[cite: 132].
-* [cite_start]**Features**: Sigma0, Peakiness (PP), and Stack Standard Deviation (SSD)[cite: 491].
-* [cite_start]**Algorithm**: Gaussian Mixture Model (GMM) with $n=2$ components[cite: 597].
-* [cite_start]**Pre-processing**: NaN removal, dimension synchronization, and standardization[cite: 492, 494, 585].
+### 3.2 Individual Sample Stability
+To ensure the model's consistency across the dataset, we inspected sub-sampled individual waveforms from both classes.
+![Sea Ice Samples](sea_ice_individual_waveforms_subsampled.png)
+![Lead Samples](leads_individual_waveforms_subsampled.png)
+*Figure 3 & 4: Sub-sampled normalized individual waveforms for Sea Ice and Leads, demonstrating classification stability.*
+
+### 3.3 Quantitative Performance
+[cite_start]When validated against official ESA ground truth flags, the unsupervised approach achieved a remarkable classification accuracy. [cite: 43]
+![Confusion Matrix](confusion_matrix_99.62pct.png)
+*Figure 5: Confusion matrix showing a final validation accuracy of **99.62%**.*
+
+## 4. Conclusion
+[cite_start]This project successfully demonstrates that **Gaussian Mixture Models** are highly effective for identifying leads within sea ice using radar altimetry. [cite: 83] By focusing on physical feature extraction and probabilistic clustering, we achieved a **99.62% accuracy** rate. [cite_start]This automated workflow is essential for improving sea ice freeboard estimates and monitoring the evolving Arctic environment. 
+
+---
+**GitHub Repository**: [GEOL0069_Assignments](https://github.com/maisonjiang3-wq/GEOL0069_Assignments)
