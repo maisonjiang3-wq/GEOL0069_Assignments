@@ -40,7 +40,9 @@ To ensure consistency, sub-sampled individual waveforms from both classes were i
 
 ### 3.3 Quantitative Performance
 When validated against the official ESA ground truth flags, the unsupervised approach achieved an outstanding accuracy of **99.62%**.
-![Confusion Matrix](confusion_matrix_99.62pct.png)
+
+![Confusion Matrix](confusion_matrix.png)
+
 *Figure 5: Confusion matrix showing the final validation accuracy of 99.62%.*
 
 ## 4. Conclusion
