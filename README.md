@@ -42,6 +42,7 @@ Inspecting individual normalized waveforms across diverse geographical locations
 
 ### 3.3 Quantitative Assessment
 The unsupervised classification results were benchmarked against official European Space Agency (ESA) surface type flags. The model achieved a high degree of fidelity with a validated accuracy of **99.62%**.
+
 ![Confusion Matrix](confusion_matrix.png)
 
 *Figure 5: Confusion matrix showing the final validation accuracy of 99.62%.*
