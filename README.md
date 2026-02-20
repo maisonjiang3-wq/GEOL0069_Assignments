@@ -34,7 +34,7 @@ Analysis of the clustered mean waveforms confirms a clear divergence in backscat
 *Figure 2: Physical signature comparison between Lead (specular) and Sea Ice (diffuse) echoes.*
 
 ### 3.2 Signal Stability Across Sub-samples
-Inspecting individual normalized waveforms across diverse geographical locations validates the robustness of the GMM. The consistent shape of the returns within each cluster suggests that the selected features are stable indicators of surface type regardless of localized signal noise.
+Visual inspection of individual normalized waveforms (Figures 3 & 4) confirms the GMM's robustness. Despite geographical variability across the Arctic transect, the returns within each cluster maintain a high degree of morphological consistency. This clustering stability indicates that the selected feature triplet—$\sigma^0$, PP, and SSD—effectively serves as a reliable proxy for surface discrimination, maintaining high signal-to-noise fidelity.
 ![Sea Ice Samples](sea_ice_individual_waveforms_subsampled.png)
 ![Lead Samples](leads_individual_waveforms_subsampled.png)
 
@@ -48,4 +48,4 @@ The unsupervised classification results were benchmarked against official Europe
 *Figure 5: Confusion matrix showing the final validation accuracy of 99.62%.*
 
 ## 4. Summary of Findings
-The integration of feature engineering with Gaussian Mixture Modeling provides a high-precision, automated alternative to manual labeling for Arctic altimetry data. Achieving an accuracy of 99.62% underscores the efficacy of using peakiness and backscatter coefficients as primary discriminators. This workflow facilitates more accurate retracking and contributes to the refinement of sea ice thickness products in the Arctic region.
+The achieved validation accuracy of 99.62% (Figure 5) quantifies the efficacy of using peakiness and backscatter coefficients as primary morphological discriminators. Beyond classification, this automated workflow provides a robust foundation for adaptive waveform retracking, ultimately contributing to the refinement of sea ice thickness retrieval and large-scale cryospheric monitoring in the Arctic region.
