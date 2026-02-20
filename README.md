@@ -8,7 +8,7 @@
 ---
 
 ## 1. Context and Research Rationale
-Accurate discrimination between sea ice and leads (open water fractures) is a prerequisite for reliable sea ice freeboard retrieval and thickness estimation. The physical interaction of Ku-band radar pulses with the Arctic surface varies significantly depending on the target's dielectric properties and roughness. This study implements an unsupervised classification framework to categorize these surface types by analyzing the morphological characteristics of Sentinel-3 SAR waveforms.
+Accurate discrimination between sea ice and leads (open water fractures) is a prerequisite for reliable sea ice freeboard retrieval and thickness estimation. The physical interaction of Ku-band radar pulses with the Arctic surface varies significantly depending on the target's dielectric properties and roughness. This analysis implements an unsupervised classification framework to categorize these surface types by analyzing the morphological characteristics of Sentinel-3 SAR waveforms.
 
 ## 2. Classification Framework
 The methodology relies on the extraction of waveform-derived parameters that serve as proxies for surface roughness and reflectivity.
@@ -22,21 +22,25 @@ The classification utilizes a triplet of parameters extracted from the radar ech
 ### 2.2 Stochastic Modeling via Gaussian Mixture Models (GMM)
 Rather than employing rigid centroid-based clustering, a **Gaussian Mixture Model (GMM)** was selected to accommodate the multimodal distribution of the feature space. By modeling the data as a mixture of multiple Gaussian distributions, GMM accounts for the covariance structure of the feature set, allowing for a more nuanced probabilistic separation between classes.
 ![GMM Clustering Results](clustered_mean_waveforms_class0-4.png)
+*Figure 1: Initial classification results showing clustered mean waveforms for different surface classes.*
 
 ## 3. Empirical Evaluation and Waveform Analysis
 
 ### 3.1 Waveform Morphology and Physical Validation
 Analysis of the clustered mean waveforms confirms a clear divergence in backscatter morphology. The class associated with **Leads** displays a sharp, specular peak with rapid power decay, consistent with mirror-like reflection. Conversely, the **Sea Ice** class exhibits a broader, diffuse return, characteristic of surface scattering from rougher ice floes.
 ![Mean Waveforms Comparison](mean_waveforms_lead_vs_ice.png)
+*Figure 2: Physical signature comparison between Lead (specular) and Sea Ice (diffuse) echoes.*
 
 ### 3.2 Signal Stability Across Sub-samples
 Inspecting individual normalized waveforms across diverse geographical locations validates the robustness of the GMM. The consistent shape of the returns within each cluster suggests that the selected features are stable indicators of surface type regardless of localized signal noise.
 ![Sea Ice Samples](sea_ice_individual_waveforms_subsampled.png)
 ![Lead Samples](leads_individual_waveforms_subsampled.png)
+*Figure 3 & 4: Sub-sampled normalized individual waveforms for Sea Ice and Leads, demonstrating classification consistency.*
 
 ### 3.3 Quantitative Assessment
 The unsupervised classification results were benchmarked against official European Space Agency (ESA) surface type flags. The model achieved a high degree of fidelity with a validated accuracy of **99.62%**.
 ![Confusion Matrix](confusion_matrix.png)
+*Figure 5: Confusion matrix showing the final validation accuracy of 99.62%.*
 
 ## 4. Summary of Findings
 The integration of feature engineering with Gaussian Mixture Modeling provides a high-precision, automated alternative to manual labeling for Arctic altimetry data. Achieving an accuracy of 99.62% underscores the efficacy of using peakiness and backscatter coefficients as primary discriminators. This workflow facilitates more accurate retracking and contributes to the refinement of sea ice thickness products in the Arctic region.
